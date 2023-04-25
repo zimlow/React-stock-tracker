@@ -1,15 +1,14 @@
-// alphavantage api key: F4YLJ35S6INL048I
-
 import React, { useEffect, useState } from "react";
 import TickerOverview from "./TickerOverview";
 import styles from "./Display.module.css";
+import NavBar from "./NavBar";
 
 const Display = () => {
   const [data, setData] = useState([]);
 
   const getData = async () => {
     //twelvedata api
-    const apiKey = "0e8a7858ffb04c8a8e68503f73249b26";
+    const apiKey = "";
     const symbols = ["AAPL", "TSLA"];
 
     //to prevent repeated entries and redundant fetches
@@ -22,7 +21,11 @@ const Display = () => {
     }
 
     symbols.forEach(async (stock) => {
-      const res = await fetch(`https://api.twelvedata.com/quote?symbol=${stock}&apikey=${apiKey}`);
+      const res = await fetch(
+        `https://api.twelvedata.com/quote?symbol=${stock}&apikey=${
+          import.meta.env.VITE_POLYGON_APIKEY
+        }`
+      );
       const thisData = await res.json();
 
       setData((prevData) => {
@@ -47,19 +50,36 @@ const Display = () => {
 
   return (
     <>
-      <h1>Navbar component here</h1>
+      <div className={styles.navBar}>
+        <NavBar />
+      </div>
       <div className={styles.bigBackground}>
-        <input className={styles.searchBar} placeholder="Search here"></input>
+        <input className={styles.searchBar} placeholder="Search Stocks here" />
+        <div className={styles.searchIcon}></div>
       </div>
       <div className="container">
         <div className={`row ${styles.row}`}>
-          <div className="col-md-1">Name</div>
-          <div className="col-md-1">Ticker</div>
-          <div className="col-md-1">Price</div>
-          <div className="col-md-1">Change</div>
-          <div className="col-md-1">Chg %</div>
-          <div className="col-md-1">Volume</div>
-          <div className="col-md-1"></div>
+          <div className="col-md-3"></div>
+          <div className="col-md-1">
+            <strong>Name</strong>
+          </div>
+          <div className="col-md-1">
+            <strong>Ticker</strong>
+          </div>
+          <div className="col-md-1">
+            <strong>Price</strong>
+          </div>
+          <div className="col-md-1">
+            <strong>Change</strong>
+          </div>
+          <div className="col-md-1">
+            <strong>Chg %</strong>
+          </div>
+          <div className="col-md-1">
+            <strong>Volume</strong>
+          </div>
+
+          <div className="col-md-3"></div>
         </div>
       </div>
 

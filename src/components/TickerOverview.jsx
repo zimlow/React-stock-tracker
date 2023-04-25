@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import StockChartModal from "./StockChartModal";
-import styles from "./Stock.module.css";
+import styles from "./TickerOverview.module.css";
 
 const TickerOverview = (props) => {
   const [showChart, setShowChart] = useState(false);
@@ -17,16 +17,31 @@ const TickerOverview = (props) => {
 
       <div className="container">
         <div className={`row ${styles.row}`}>
-          <div className="col-md-1">{props.name}</div>
-          <div className="col-md-1">{props.symbol}</div>
-          <div className="col-md-1">{tidyUp(JSON.parse(props.close))}</div>
-          <div className="col-md-1">{tidyUp(JSON.parse(props.change))}</div>
-          <div className="col-md-1">{tidyUp(JSON.parse(props.percent_change))}%</div>
-          {/* need to cater for thousands */}
-          <div className="col-md-1">{tidyUp(JSON.parse(props.volume) / 1000000)}M</div>
-          <button className="col-md-1" onClick={() => setShowChart(true)}>
-            chart
-          </button>
+          <div className="col-md-3"></div>
+          <div className={`col-md-1 ${styles.stock}`}>{props.name}</div>
+          <div className={`col-md-1 ${styles.stock}`}>{props.symbol}</div>
+          <div className={`col-md-1 ${styles.stock}`}>{tidyUp(JSON.parse(props.close))}</div>
+          <div
+            className={`col-md-1 ${styles.stock} ${props.change < 0 ? styles.red : styles.green}`}
+          >
+            {tidyUp(JSON.parse(props.change))}
+          </div>
+          <div
+            className={`col-md-1 ${styles.stock} ${
+              props.percent_change < 0 ? styles.red : styles.green
+            }`}
+          >
+            {tidyUp(JSON.parse(props.percent_change))}%
+          </div>
+
+          <div className={`col-md-1 ${styles.stock}`}>
+            {tidyUp(JSON.parse(props.volume) / 1000000)}M
+          </div>
+          <div className="col-md-3">
+            <button className={styles.button} onClick={() => setShowChart(true)}>
+              Launch Chart
+            </button>
+          </div>
         </div>
       </div>
     </>
