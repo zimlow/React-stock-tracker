@@ -1,7 +1,6 @@
 .bigBackground {
   display: flex;
   height: 70vh;
-
   align-items: center;
   justify-content: center;
   background-image: url(https://github.com/creativetimofficial/paper-kit-react/blob/main/src/assets/img/antoine-barres.jpg?raw=true);
@@ -20,31 +19,56 @@
 .searchBar {
   display: flex;
   border-radius: 30px;
-  border: 2px solid black;
+  border: 3px solid white;
+  margin-top: 15%;
   height: 12%;
   width: 25%;
   font-size: 25px;
 
-  justify-content: center;
-  justify-items: center;
-  align-content: center;
-  align-items: center;
   padding: 0 0 0 20px;
-  color: #cd7f32;
+  color: #282c34;
   background-color: white;
+
+  outline: none;
 }
 .searchBar::placeholder {
-  color: #cd7f32;
+  color: #282c34;
+}
+.searchBar:focus {
+  border: 3px solid darkolivegreen;
+}
+
+.searchBar:hover {
+  border: 3px solid darkolivegreen;
 }
 
 .row {
-  border-bottom: 3px solid darkolivegreen;
-  border-top: 3px solid darkolivegreen;
+  /* border-bottom: 3px solid darkolivegreen;
+  border-top: 3px solid darkolivegreen; */
+  background-color: darkolivegreen;
   height: 3rem;
   align-items: center;
   justify-content: center;
   text-align: center;
   margin-top: 20px;
   margin-bottom: 20px;
-  border-radius: 3px;
+  border-radius: 50px;
+}
+
+.row > div {
+  width: 11%;
+}
+
+.bigBackground > .icon {
+  position: fixed;
+  margin-left: 21%;
+  margin-top: 15%;
+  height: 1.2rem;
+  width: 1.2rem;
+}
+
+.bigBackground > h1 {
+  position: absolute;
+  font-size: 7rem;
+  color: #282c34;
 }
