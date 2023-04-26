@@ -1,15 +1,17 @@
 import { createChart, ColorType, CrosshairMode } from "lightweight-charts";
 import React, { useEffect, useRef, useState } from "react";
+import styles from "./Chart.module.css";
 
 export default function Chart(props) {
   const chartContainerRef = useRef();
   const [chartType, setChartType] = useState("candles");
+  const chartTypeRef = useRef();
 
   useEffect(() => {
     const handleResize = () => {
       chart.applyOptions({
-        width: window.innerWidth,
-        height: window.innerHeight,
+        width: window.innerWidth * 0.9,
+        height: window.innerHeight * 0.85,
       });
     };
 
@@ -73,7 +75,6 @@ export default function Chart(props) {
       let priceFormatted = "";
       if (param.time) {
         const data = param.seriesData.get(lineSeries);
-        //why data.close doesn't give me error when i dont have close in data.
         const price = data.value !== undefined ? data.value : data.close;
         priceFormatted = price.toFixed(2);
       }
@@ -102,10 +103,27 @@ export default function Chart(props) {
     };
   }, [props.lineData, props.candlestickData, chartType]);
 
+  const handleChartTypeChange = (event) => {
+    setChartType(event.target.value);
+  };
+
   return (
     <>
-      <button onClick={() => setChartType("line")}>line</button>
-      <button onClick={() => setChartType("candles")}>candlestick</button>
+      <div className={styles.toolbar}>
+        {/* <button className={styles.button} onClick={() => setChartType("line")}>
+          line
+        </button>
+        <button className={styles.button} onClick={() => setChartType("candles")}>
+          candlestick
+        </button> */}
+        <select ref={chartTypeRef} onChange={handleChartTypeChange} defaultValue="">
+          <option value="" disabled hidden>
+            Select Chart Type
+          </option>
+          <option value="line">Line Chart</option>
+          <option value="candles">Candlestick Chart</option>
+        </select>
+      </div>
       <div ref={chartContainerRef}></div>
     </>
   );

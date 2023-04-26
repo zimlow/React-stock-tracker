@@ -1,15 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import TickerOverview from "./TickerOverview";
 import styles from "./Display.module.css";
 
 const Display = () => {
   const [data, setData] = useState([]);
+  const [filteredData, setFilteredData] = useState();
+  const searchBarRef = useRef();
+  const symbols = ["AAPL", "NFLX", "AMZN", "NVDA"];
 
   const getData = async () => {
-    //twelvedata api
-    const apiKey = "";
-    const symbols = ["AAPL", "TSLA"];
-
     //to prevent repeated entries and redundant fetches
     for (const symbol of symbols) {
       for (const item of data) {
@@ -42,17 +41,36 @@ const Display = () => {
       });
     });
   };
+  const handleSearch = () => {
+    const searchTerm = searchBarRef.current.value.toLowerCase();
+    console.log("searchBarRef.current.value: ", searchBarRef.current.value);
+    console.log("data is: ", data);
+
+    const filteredData = data.filter(
+      (stock) =>
+        stock.symbol.toLowerCase().startsWith(searchTerm) ||
+        stock.name.toLowerCase().startsWith(searchTerm)
+    );
+
+    setFilteredData(filteredData);
+  };
 
   useEffect(() => {
     getData();
   }, []);
 
+  const dataToShow = filteredData ? filteredData : data;
+
   return (
     <>
       <div className={styles.bigBackground}>
         <h1>Hello.</h1>
-        <input className={styles.searchBar} placeholder="Search Stocks" />
-
+        <input
+          className={styles.searchBar}
+          placeholder="Search Stocks"
+          ref={searchBarRef}
+          onChange={handleSearch}
+        />
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="#555"
@@ -88,7 +106,7 @@ const Display = () => {
         </div>
       </div>
 
-      {data.map((stock) => {
+      {dataToShow?.map((stock) => {
         return (
           <TickerOverview
             name={stock.name}

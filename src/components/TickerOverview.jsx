@@ -39,7 +39,7 @@ const TickerOverview = (props) => {
           </div>
           <div className="col-md-3">
             <button className={styles.button} onClick={() => setShowChart(true)}>
-              Launch Chart
+              <strong>Launch Chart</strong>
             </button>
           </div>
         </div>

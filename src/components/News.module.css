@@ -1,0 +1,27 @@
+.bigBackground {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  background-image: url(https://github.com/creativetimofficial/paper-kit-react/blob/main/src/assets/img/antoine-barres.jpg?raw=true);
+  background-size: 100%;
+}
+
+.popUp {
+  background-color: lightgray;
+  width: 50%;
+  height: 80%;
+  overflow-wrap: auto;
+  border-radius: 20px;
+  border: #282c34 3px solid;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  color: #282c34;
+}
+
+.popUp > div {
+  display: flex;
+  margin: 0;
+}
