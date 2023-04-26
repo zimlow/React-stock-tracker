@@ -60,7 +60,8 @@ export default function Chart(props) {
     //insert legend
     const container = document.getElementById("container");
     const legend = document.createElement("div");
-    legend.style = `position: absolute; left: 12px; top: 12px; z-index: 1; font-size: 20px; font-family: sans-serif; line-height: 18px; font-weight: 300;`;
+
+    legend.style = `position: absolute; left: 12px; top: 40px; z-index: 1; font-size: 20px; font-family: sans-serif; line-height: 18px; font-weight: 300;`;
     container.appendChild(legend);
 
     const firstRow = document.createElement("div");
@@ -103,9 +104,9 @@ export default function Chart(props) {
 
   return (
     <>
-      <div ref={chartContainerRef}></div>
       <button onClick={() => setChartType("line")}>line</button>
       <button onClick={() => setChartType("candles")}>candlestick</button>
+      <div ref={chartContainerRef}></div>
     </>
   );
 }

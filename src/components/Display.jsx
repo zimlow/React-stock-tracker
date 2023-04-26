@@ -52,9 +52,10 @@ const Display = () => {
       <div className={styles.bigBackground}>
         <h1>Hello.</h1>
         <input className={styles.searchBar} placeholder="Search Stocks" />
+
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          fill="#282c34"
+          fill="#555"
           viewBox="0 0 16 16"
           className={styles.icon}
         >
