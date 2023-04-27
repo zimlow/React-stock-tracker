@@ -6,7 +6,7 @@ const Display = () => {
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState();
   const searchBarRef = useRef();
-  const symbols = ["AAPL", "NFLX", "AMZN", "NVDA"];
+  const symbols = ["AAPL", "AMZN"];
 
   const getData = async () => {
     //to prevent repeated entries and redundant fetches
@@ -21,7 +21,7 @@ const Display = () => {
     symbols.forEach(async (stock) => {
       const res = await fetch(
         `https://api.twelvedata.com/quote?symbol=${stock}&apikey=${
-          import.meta.env.VITE_POLYGON_APIKEY
+          import.meta.env.VITE_12DATA_APIKEY
         }`
       );
       const thisData = await res.json();

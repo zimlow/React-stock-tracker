@@ -4,3 +4,10 @@
   position: absolute;
   z-index: 100;
 }
+
+.toolbar > select {
+  margin: 5px 0 0 10px;
+  border-radius: 10px;
+  width: 25%;
+  text-align: center;
+}

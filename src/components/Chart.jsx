@@ -10,8 +10,8 @@ export default function Chart(props) {
   useEffect(() => {
     const handleResize = () => {
       chart.applyOptions({
-        width: window.innerWidth * 0.9,
-        height: window.innerHeight * 0.85,
+        width: window.innerWidth,
+        height: window.innerHeight,
       });
     };
 
@@ -24,8 +24,8 @@ export default function Chart(props) {
         vertLines: { color: "" },
         horzLines: { color: "" },
       },
-      width: window.innerWidth * 0.9,
-      height: window.innerHeight * 0.9,
+      width: window.innerWidth,
+      height: window.innerHeight,
       watermark: {
         visible: true,
         fontSize: 200,
@@ -109,13 +109,8 @@ export default function Chart(props) {
 
   return (
     <>
+      {/* Chart toolbar */}
       <div className={styles.toolbar}>
-        {/* <button className={styles.button} onClick={() => setChartType("line")}>
-          line
-        </button>
-        <button className={styles.button} onClick={() => setChartType("candles")}>
-          candlestick
-        </button> */}
         <select ref={chartTypeRef} onChange={handleChartTypeChange} defaultValue="">
           <option value="" disabled hidden>
             Select Chart Type
@@ -124,6 +119,8 @@ export default function Chart(props) {
           <option value="candles">Candlestick Chart</option>
         </select>
       </div>
+
+      {/* Actual Chart */}
       <div ref={chartContainerRef}></div>
     </>
   );

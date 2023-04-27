@@ -12,11 +12,6 @@ const NavBar = () => {
               Main
             </NavLink>
           </li>
-          <li>
-            <NavLink className={(navData) => (navData.isActive ? styles.active : "")} to="/news">
-              News
-            </NavLink>
-          </li>
         </ul>
       </nav>
     </header>

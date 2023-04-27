@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import StockChartModal from "./StockChartModal";
 import styles from "./TickerOverview.module.css";
+import { Link } from "react-router-dom";
 
 const TickerOverview = (props) => {
   const [showChart, setShowChart] = useState(false);
@@ -11,10 +11,6 @@ const TickerOverview = (props) => {
 
   return (
     <>
-      {showChart && (
-        <StockChartModal name={props.name} symbol={props.symbol} setShowChart={setShowChart} />
-      )}
-
       <div className="container">
         <div className={`row ${styles.row}`}>
           <div className="col-md-3"></div>
@@ -38,9 +34,15 @@ const TickerOverview = (props) => {
             {tidyUp(JSON.parse(props.volume) / 1000000)}M
           </div>
           <div className="col-md-3">
-            <button className={styles.button} onClick={() => setShowChart(true)}>
-              <strong>Launch Chart</strong>
-            </button>
+            <Link
+              to={`/main/${props.symbol}`}
+              state={{ symbol: props.symbol, name: props.name }}
+              style={{ textDecoration: "none" }}
+            >
+              <button className={styles.button}>
+                <strong>Launch Chart</strong>
+              </button>
+            </Link>
           </div>
         </div>
       </div>
