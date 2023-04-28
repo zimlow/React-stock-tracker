@@ -1,10 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./TickerOverview.module.css";
 import { Link } from "react-router-dom";
 
 const TickerOverview = (props) => {
-  const [showChart, setShowChart] = useState(false);
-
   const tidyUp = (int) => {
     return Math.round(int * 100) / 100;
   };

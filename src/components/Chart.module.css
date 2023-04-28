@@ -3,11 +3,12 @@
   background-color: black;
   position: absolute;
   z-index: 100;
+  margin-top: 2rem;
 }
 
 .toolbar > select {
   margin: 5px 0 0 10px;
   border-radius: 10px;
-  width: 25%;
+  width: 12%;
   text-align: center;
 }

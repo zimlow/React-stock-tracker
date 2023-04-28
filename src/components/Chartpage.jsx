@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Chart from "./Chart";
 import styles from "./Modal.module.css";
+import { useLocation } from "react-router-dom";
+import NavBar from "./NavBar";
 
-import { useParams, useLocation } from "react-router-dom";
-
-const Chartpage = (props) => {
-  const params = useParams();
+const Chartpage = () => {
   const [candlestickData, setCandlestickData] = useState([]);
   const [lineData, setLineData] = useState([]);
   const location = useLocation();
@@ -45,6 +44,7 @@ const Chartpage = (props) => {
 
   return (
     <div className={styles.modal} id="container">
+      <NavBar />
       <Chart
         lineData={lineData}
         candlestickData={candlestickData}

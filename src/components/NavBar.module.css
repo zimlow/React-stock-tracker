@@ -1,8 +1,9 @@
 .navbar {
-  position: absolute;
-  height: 3rem;
+  position: fixed;
+  height: 2rem;
   background-color: #282c34;
   width: 100%;
+  z-index: 200;
 }
 
 .navbar nav {
@@ -13,7 +14,7 @@
   height: 100%;
   list-style: none;
   display: flex;
-  padding-left: 50px;
+  padding-left: 20px;
   margin: 0;
   align-items: center;
   justify-content: start;

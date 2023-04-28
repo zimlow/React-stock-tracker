@@ -7,7 +7,7 @@ import Chartpage from "./components/Chartpage";
 function App() {
   return (
     <>
-      {/* <NavBar /> */}
+      <NavBar />
       <Routes>
         {/*Routes replaces Switch, must use when using Route*/}
         <Route path="/" element={<Navigate replace to="/main" />} />

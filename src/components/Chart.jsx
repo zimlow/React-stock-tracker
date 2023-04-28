@@ -1,4 +1,4 @@
-import { createChart, ColorType, CrosshairMode } from "lightweight-charts";
+import { createChart, CrosshairMode } from "lightweight-charts";
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./Chart.module.css";
 
@@ -63,7 +63,7 @@ export default function Chart(props) {
     const container = document.getElementById("container");
     const legend = document.createElement("div");
 
-    legend.style = `position: absolute; left: 12px; top: 40px; z-index: 1; font-size: 20px; font-family: sans-serif; line-height: 18px; font-weight: 300;`;
+    legend.style = `position: absolute; left: 12px; top: 80px; z-index: 1; font-size: 20px; font-family: sans-serif; line-height: 18px; font-weight: 300;`;
     container.appendChild(legend);
 
     const firstRow = document.createElement("div");
@@ -83,6 +83,7 @@ export default function Chart(props) {
 
     chart.timeScale().fitContent();
 
+    //toggle chart type
     if (chartType != "candles") {
       lineSeries.applyOptions({
         topColor: "rgba(38, 198, 218, 0.56)",
@@ -94,6 +95,7 @@ export default function Chart(props) {
       chart.removeSeries(candleSeries);
     }
 
+    //handle resizing of window
     window.addEventListener("resize", handleResize);
 
     return () => {
@@ -109,7 +111,6 @@ export default function Chart(props) {
 
   return (
     <>
-      {/* Chart toolbar */}
       <div className={styles.toolbar}>
         <select ref={chartTypeRef} onChange={handleChartTypeChange} defaultValue="">
           <option value="" disabled hidden>
