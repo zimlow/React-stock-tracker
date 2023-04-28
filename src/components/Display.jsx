@@ -6,7 +6,7 @@ const Display = () => {
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState();
   const searchBarRef = useRef();
-  const symbols = ["AAPL", "AMZN", "NFLX", "GOOG", "META"];
+  const symbols = ["AAPL", "AMZN", "NFLX", "NVDA"];
 
   const getData = async () => {
     //to prevent repeated entries and redundant fetches
@@ -41,10 +41,10 @@ const Display = () => {
       });
     });
   };
+
+  //search function
   const handleSearch = () => {
     const searchTerm = searchBarRef.current.value.toLowerCase();
-    console.log("searchBarRef.current.value: ", searchBarRef.current.value);
-    console.log("data is: ", data);
 
     const filteredData = data.filter(
       (stock) =>
@@ -59,6 +59,7 @@ const Display = () => {
     getData();
   }, []);
 
+  //set data to show according to if search input is given
   const dataToShow = filteredData ? filteredData : data;
 
   return (
