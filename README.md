@@ -6,9 +6,9 @@ A React app to view the daily chart of a stock over a 30 days period
 
 ## Technologies used
 
-<p>React, React Router, [TradingView's](https://www.tradingview.com/lightweight-charts/) lightweight-charts</p>
-<p>Bootstrap, CSS for styling</p>
-<p>API used: [Twelvedata](https://twelvedata.com/docs#core-data)</p>
+React, React Router, [TradingView's](https://www.tradingview.com/lightweight-charts/) lightweight-charts<br/>
+Bootstrap, CSS for styling <br/>
+API used: [Twelvedata](https://twelvedata.com/docs#core-data)
 
 ## General Approach
 
