@@ -19,7 +19,7 @@ A React app to view the daily chart of a stock over a 30 days period
     <li>Click browser back button or Main button in navbar to go back to Main</li>
 </ul>
 
-<ul> Note for API usage:
+<ul> <strong>Note for API usage:</strong>
     <li>requires personal API key, obtained from twelvedata</li>
     <li>enclose it in an .env file and retrieve it in the code</li>
 </ul>
