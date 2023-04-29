@@ -42,7 +42,7 @@ const Display = () => {
     });
   };
 
-  //search function
+  //search bar
   const handleSearch = () => {
     const searchTerm = searchBarRef.current.value.toLowerCase();
 
